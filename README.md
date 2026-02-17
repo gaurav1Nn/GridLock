@@ -8,11 +8,12 @@ No signup. No login. Just open and play.
 
 ---
 
-## Live Demo / Screenshots
+## Live Demo
 
-> Open `http://localhost:3000` in **multiple browser tabs** to test multiplayer locally.
+**[Play GridLock Live →](https://gridlock-3et7.onrender.com/)**
 
-_Screenshots can be added here after deployment._
+> Open the link in **multiple browser tabs** to test multiplayer.
+> Note: Free tier may take ~30 seconds to wake up on first visit.
 
 ---
 
