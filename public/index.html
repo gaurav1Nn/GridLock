@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GridLock — Real-Time Territory Capture</title>
+  <meta name="description"
+    content="Claim blocks on a shared grid in real time. Compete with other players to control the most territory." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div id="connection-banner" class="connection-banner hidden">
+    <span id="connection-text">Reconnecting...</span>
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <h1 class="logo">
+        <span class="logo-icon">⬡</span>
+        Grid<span class="logo-accent">Lock</span>
+      </h1>
+      <div class="online-badge" id="online-badge">
+        <span class="online-dot"></span>
+        <span id="online-count">0</span> online
+      </div>
+    </div>
+    <div class="topbar-right">
+      <div class="user-badge" id="user-badge">
+        <span class="user-color-dot" id="user-color-dot"></span>
+        <span id="user-name">Connecting...</span>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle Theme">
+        <span id="theme-icon">☀</span>
+      </button>
+      <div class="zoom-controls">
+        <button id="zoom-out" class="icon-btn" title="Zoom Out">−</button>
+        <span id="zoom-level" class="zoom-label">100%</span>
+        <button id="zoom-in" class="icon-btn" title="Zoom In">+</button>
+        <button id="zoom-reset" class="icon-btn" title="Reset View">⌂</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-layout">
+    <div class="canvas-container" id="canvas-container">
+      <canvas id="grid-canvas"></canvas>
+
+      <div id="cooldown-overlay" class="cooldown-overlay hidden">
+        <div class="cooldown-bar" id="cooldown-bar"></div>
+      </div>
+
+      <div id="toast" class="toast hidden">
+        <span id="toast-text"></span>
+      </div>
+
+      <div id="cell-tooltip" class="cell-tooltip hidden">
+        <span id="tooltip-text"></span>
+      </div>
+    </div>
+
+    <aside class="sidebar" id="sidebar">
+      <button class="sidebar-toggle" id="sidebar-toggle" title="Toggle Sidebar">
+        <span>◀</span>
+      </button>
+
+      <section class="sidebar-section">
+        <h2 class="section-title">Your Territory</h2>
+        <div class="your-stats">
+          <div class="stat-card">
+            <span class="stat-value" id="your-cells">0</span>
+            <span class="stat-label">cells owned</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value" id="your-rank">—</span>
+            <span class="stat-label">rank</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="sidebar-section">
+        <h2 class="section-title">Leaderboard</h2>
+        <ol class="leaderboard" id="leaderboard">
+          <li class="leaderboard-empty">No claims yet</li>
+        </ol>
+      </section>
+
+      <section class="sidebar-section">
+        <h2 class="section-title">Activity</h2>
+        <ul class="activity-feed" id="activity-feed">
+          <li class="activity-item activity-empty">Waiting for action...</li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
